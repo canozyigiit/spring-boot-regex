@@ -15,7 +15,7 @@ public class RegexServiceImpl implements RegexService {
         boolean found = false;
 
         while (matcher.find()) {
-            foundedText += "gün : "+matcher.group("day")+ "ay : "+matcher.group("month") + "yıl : "+matcher.group("year") + " ";
+            foundedText += "gün : "+matcher.group("day")+ " ay : "+matcher.group("month") + " yıl : "+matcher.group("year") + " ";
             found = true;
         }
         if (!found) {
@@ -27,12 +27,13 @@ public class RegexServiceImpl implements RegexService {
     @Override
     public String getPhoneNumber(String text) {
         String foundedText = "";
-        Pattern pattern = Pattern.compile("((\\+\\d{2})?[ ]?\\(?(\\d{3})\\)?[ -.]?(\\d{3})[ -.]?(\\d{4}))");
+        Pattern pattern = Pattern.compile("((?<areaCode>\\+\\d{2})?[ -.]?\\(?(?<operator>\\d{3})\\)?[ -.]?(?<main>\\d{3})[ -.]?(?<number>\\d{4}))");
         Matcher matcher = pattern.matcher(text);
+
         boolean found = false;
 
         while (matcher.find()) {
-            foundedText += matcher.group() + " ";
+            foundedText += "areaCode : "+matcher.group("areaCode")+ " operator : "+matcher.group("operator") + " main : "+matcher.group("main") + " number : "+matcher.group("number")+ " ";
 
             found = true;
         }
