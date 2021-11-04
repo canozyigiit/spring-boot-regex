@@ -35,4 +35,8 @@ public class RegexController {
     public String getHashtag(@RequestParam String text) {
         return regexService.getHashtag(text);
     }
+    @PostMapping("/getURL")
+    public String getURL(@RequestParam String text) {
+        return regexService.getURL(text);
+    }
 }

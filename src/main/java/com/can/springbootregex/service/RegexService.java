@@ -6,4 +6,5 @@ public interface RegexService {
     String getPhoneNumber(String s);
     String getEmail(String s);
     String getHashtag(String s);
+    String getURL(String s);
 }

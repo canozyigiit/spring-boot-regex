@@ -10,12 +10,12 @@ import java.util.regex.Pattern;
 public class RegexServiceImpl implements RegexService {
     public String getDate(String text) {
         String foundedText = "";
-        Pattern pattern = Pattern.compile("(([0-9]{2}))([\\/\\-\\.])(([0-9]{2}))([\\/\\-\\.])(([0-9]{2,4}))");
+        Pattern pattern = Pattern.compile("((?<day>([0-9]{2}))([\\/\\-\\.])(?<month>([0-9]{2}))([\\/\\-\\.])(?<year>([0-9]{2,4})))");
         Matcher matcher = pattern.matcher(text);
         boolean found = false;
 
         while (matcher.find()) {
-            foundedText += matcher.group() + " ";
+            foundedText += "gün : "+matcher.group("day")+ "ay : "+matcher.group("month") + "yıl : "+matcher.group("year") + " ";
             found = true;
         }
         if (!found) {
@@ -65,6 +65,24 @@ public class RegexServiceImpl implements RegexService {
         String foundedText = "";
         Pattern pattern = Pattern.compile("(#[a-zA-Z0-9işüğçöı]+)");
         Matcher matcher = pattern.matcher(text);
+        boolean found = false;
+
+        while (matcher.find()) {
+            foundedText += matcher.group() + " ";
+
+            found = true;
+        }
+        if (!found) {
+            return "No match found.";
+        }
+        return foundedText;
+    }
+
+    @Override
+    public String getURL(String s) {
+        String foundedText = "";
+        Pattern pattern = Pattern.compile("(https?:?\\/\\/)?(www)?\\.?[a-zA-Z0-9]+\\.[a-zA-Z]{2,}");
+        Matcher matcher = pattern.matcher(s);
         boolean found = false;
 
         while (matcher.find()) {
