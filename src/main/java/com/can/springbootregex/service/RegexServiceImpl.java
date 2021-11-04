@@ -16,10 +16,8 @@ public class RegexServiceImpl implements RegexService {
 
         while (matcher.find()) {
             foundedText += matcher.group() + " ";
-
             found = true;
         }
-        System.out.println(foundedText + "");
         if (!found) {
             return "No match found.";
         }
@@ -38,7 +36,6 @@ public class RegexServiceImpl implements RegexService {
 
             found = true;
         }
-        System.out.println(foundedText + "");
         if (!found) {
             return "No match found.";
         }
@@ -57,7 +54,6 @@ public class RegexServiceImpl implements RegexService {
 
             found = true;
         }
-        System.out.println(foundedText + "");
         if (!found) {
             return "No match found.";
         }
@@ -76,7 +72,6 @@ public class RegexServiceImpl implements RegexService {
 
             found = true;
         }
-        System.out.println(foundedText + "");
         if (!found) {
             return "No match found.";
         }
